@@ -4,12 +4,13 @@ class Solution(object):
         :type arr: List[int]
         :rtype: int
         """
-        m=-1
-        k=0
-        for  i in range(len(arr)):
-            if(arr[i]>m):
-                m=arr[i]
-                k=i
+        lo = 0
+        hi = len(arr) - 1
         
-        return k
-        
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if arr[mid] < arr[mid + 1]:
+                lo = mid + 1
+            else:
+                hi = mid
+        return lo
